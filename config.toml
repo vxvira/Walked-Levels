@@ -1,0 +1,32 @@
+# AZBacktest configuration
+# NQ continuous front-month, Databento GLBX MDP3 MBP-1 schema
+
+path = "C:/Users/b0owl/Projects/Data/mbp-1/glbx-mdp3-20260620-20260919.mbp-1.csv"
+
+# columns (0-indexed): ts_recv(0), ts_event(1), action(5), side(6), price(8), size(9), bid_px_00(13),
+# ask_px_00(14), symbol(19)
+tsRecvCol  = 0
+tsEventCol = 1   # groups the fills of one aggressor order (see SweepDetector)
+priceCol   = 8
+sizeCol    = 9
+skipHeader = true
+
+# NQ outrights, back months and spreads are interleaved in this file; roll follows the front month
+symbolCol  = 19
+symbol     = "NQ"
+symbolRoll = true
+
+# aggressor side on T rows, resting order side on A/C/M rows
+aggressor                 = 6
+buySideAggressorAlias     = "B"
+sellSideAggressorAlias    = "A"
+unknownSideAggressorAlias = "N"
+
+bidPriceCol = 13
+askPriceCol = 14
+actionCol   = 5   # A add, C cancel, M modify, T trade, F fill, R clear
+
+# trading costs, pts per round trip: 1 MNQ $1.24 all-in at $2/pt
+commission = 0.62
+spread     = 0.0
+timingCost = 0.0

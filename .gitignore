@@ -1,0 +1,6 @@
+build/
+imgui.ini
+*.log
+.vs/
+.vscode/
+/atas
